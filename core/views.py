@@ -16,6 +16,7 @@ def home(request):
 
 def new_search(request):
     search = request.POST.get('search')
+    Search.objects.create(search=search)
     final_url = BASE_CRAIGSLIST_URL.format(quote_plus(search))
     response = requests.get(final_url)
     data = response.text
